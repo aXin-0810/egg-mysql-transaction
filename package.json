@@ -1,6 +1,6 @@
 {
   "name": "egg-mysql-transaction",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "egg-mysql分布式集群事务中央处理器",
   "main": "index.js",
   "scripts": {
