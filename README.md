@@ -83,6 +83,9 @@ conn1.update("");
 // 统一commit提交
 connGroup.commitTransaction();
 
+// 主动回滚数据
+connGroup.rollbackTransaction();
+
 ```
 
 
