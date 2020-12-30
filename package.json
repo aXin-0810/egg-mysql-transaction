@@ -1,0 +1,17 @@
+{
+  "name": "egg-mysql-transaction",
+  "version": "1.0.0",
+  "description": "egg-mysql分布式集群事务中央处理器",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "egg-mysql-transaction",
+    "egg",
+    "egg-mysql",
+    "transaction"
+  ],
+  "author": "levy【axin_0810】",
+  "license": "ISC"
+}
