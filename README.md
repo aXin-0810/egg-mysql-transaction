@@ -1,22 +1,15 @@
-egg-mysql 扩展中间件
-===
 
+  * egg-mysql-transaction 中间件
   * 分布式集群事务中央处理器，处理分布式数据库或多事务的操作
-  * 插件为egg-mysql扩展件依赖egg-mysql，如何使用不过多描述
-
-原作者
-===
-
-  * levy
-
-创建时间
-===
-
-  * 2020-12-29
+  * 插件为有部分性质依赖egg-mysql扩展件，如何使用不过多描述
 
 使用案例
 ===
+```javascript
+
 npm install egg-mysql-transaction
+
+```
 
 第一步：创建中间键 app/middleware/createTransactionGroup.js
 ===
@@ -137,8 +130,17 @@ module.exports = test;
 
 ```
 
+原作者
+===
+
+  * levy
+
+创建时间
+===
+
+  * 2020-12-29
 
 更新时间
 ===
 
-  * 2020-12-29 （levy）
+  * 2020-12-31 （levy）
