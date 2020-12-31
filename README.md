@@ -24,7 +24,7 @@ npm install egg-mysql-transaction
 
 const { createTransactionGroup } = require('egg-mysql-transaction');
 module.exports = options => {
-	return async function (ctx, next) {
+  return async function (ctx, next) {
 
     // 创建事务组
     ctx.transactionGroup = new createTransactionGroup();
@@ -33,13 +33,13 @@ module.exports = options => {
 
     var temp = null;
     Object.defineProperty(ctx, 'body', {
-      enumerable:true,
-      get(){
+      enumerable: true,
+      get() {
         return temp;
       },
-      set(val){
+      set(val) {
         // 统一提交事务
-        if(!ctx.transactionGroup.commitBool){
+        if (!ctx.transactionGroup.commitBool) {
           var result = ctx.transactionGroup.commitTransaction();
         };
         /**
@@ -48,9 +48,9 @@ module.exports = options => {
         temp = val;
       }
     });
-		
-		await next();
-	};
+
+    await next();
+  };
 };
 
 ```
@@ -95,20 +95,20 @@ module.exports = appInfo => {
 
 class test extends Controller {
 
-	async testFun() {
-		const { ctx, config } = this;
-    
+  async testFun() {
+    const { ctx, config } = this;
+
     //添加注册事务组成员
-    var conn1 = ctx.transactionGroup.pushTransaction("connKeyId1",{
-      transaction : await app.mysql.get("mysql1").beginTransaction(),
-      autocommit : 1, //事务是否自动提交 默认，非必填【1，0】
-      isolationLevel : 'read_uncommitted' //事务隔离级别 默认，非必填【read_uncommitted，read_committed，repeatable_read，serializable】
+    var conn1 = ctx.transactionGroup.pushTransaction("connKeyId1", {
+      transaction: await app.mysql.get("mysql1").beginTransaction(),
+      autocommit: 1, //事务是否自动提交 默认，非必填【1，0】
+      isolationLevel: 'read_uncommitted' //事务隔离级别 默认，非必填【read_uncommitted，read_committed，repeatable_read，serializable】
     });
 
-    var conn2 = ctx.transactionGroup.pushTransaction("connKeyId2",{
-      transaction : await app.mysql.get("mysql2").beginTransaction(),
-      autocommit : 1, 
-      isolationLevel : 'read_committed'
+    var conn2 = ctx.transactionGroup.pushTransaction("connKeyId2", {
+      transaction: await app.mysql.get("mysql2").beginTransaction(),
+      autocommit: 1,
+      isolationLevel: 'read_committed'
     });
 
     //获取事务实例的第二种方式
@@ -129,13 +129,11 @@ class test extends Controller {
     ctx.transactionGroup.rollbackTransaction();
 
     ctx.body = "返回数据";
-	}
-	
+  }
+
 }
 
 module.exports = test;
-
-}
 
 ```
 
